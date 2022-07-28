@@ -28,7 +28,7 @@ Route::get('/hotels', function(Request $request) {
 Route::get('/hotels/{hotelId}', function($hotelId, Request $request) {
     $response = Http::withHeaders([
         'x-api-key' => config('app.impala_api'),
-    ])->get('https://sandbox.impala.travel/v1/'.$params."/".$hotelId);
+    ])->get('https://sandbox.impala.travel/v1/hotels/'.$hotelId);
     return $response->json();
 });
 
