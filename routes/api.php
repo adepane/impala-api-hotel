@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Http;
 |
 */
 // get query by params hotels
-Route::get('/hotels', function($params, Request $request) {
+Route::get('/hotels', function(Request $request) {
     $response = Http::withHeaders([
         'x-api-key' => config('app.impala_api'),
     ])->get('https://sandbox.impala.travel/v1/hotels?'.http_build_query($request->all()));
@@ -25,7 +25,7 @@ Route::get('/hotels', function($params, Request $request) {
 });
 
 // get query by hotelId
-Route::get('/hotels/{hotelId}', function($params, $hotelId, Request $request) {
+Route::get('/hotels/{hotelId}', function($hotelId, Request $request) {
     $response = Http::withHeaders([
         'x-api-key' => config('app.impala_api'),
     ])->get('https://sandbox.impala.travel/v1/'.$params."/".$hotelId);
